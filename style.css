@@ -1,0 +1,438 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  body {
+    overflow-x: hidden;
+    background: #1a1a1a;
+    color: #fff;
+  }
+  
+  /* Navigation Styles */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+  }
+  
+  nav ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    padding: 10px 20px;
+  }
+  
+  nav ul li {
+    margin: 0 10px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 400;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  
+  nav ul li a.active,
+  nav ul li a:hover {
+    color: #ffd700;
+  }
+  
+  /* Section Styles */
+  .section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .section-content {
+    text-align: center;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    max-width: 1200px;
+    padding: 20px;
+  }
+  
+  .section-content.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(45deg, #ffd700, #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .section p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  
+  .feature-list {
+    text-align: left;
+    margin: 20px 0;
+    font-size: 1.1rem;
+  }
+  
+  .feature-list li {
+    margin-bottom: 15px;
+    list-style: none;
+    position: relative;
+    padding-left: 40px;
+    transition: transform 0.3s, color 0.3s;
+  }
+  
+  .feature-list li:hover {
+    transform: translateX(10px);
+    color: #ffd700;
+  }
+  
+  .feature-list li:before {
+    content: '⚡️';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 1.5rem;
+    color: #ffd700;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  
+  .buy-now {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: #ffd700;
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+  }
+  
+  .buy-now:hover {
+    background: #e6c200;
+    transform: scale(1.05);
+  }
+  
+  /* Logo Styles */
+  .logo {
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px auto;
+  }
+  
+  /* Parallax Layers */
+  .parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+    z-index: 1;
+  }
+  
+  .parallax-fg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+    z-index: 2;
+    opacity: 0.3;
+  }
+  
+  /* 360 and 270 View Sections */
+  #view360, #engine270 {
+    background: #000;
+    height: 200vh;
+  }
+  
+  .car-360, .engine-270 {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+  }
+  
+  #car-3d-container {
+    width: 80%;
+    height: 80%;
+  }
+  
+  .car-360 canvas, .engine-270 img {
+    max-width: 80%;
+    max-height: 80%;
+    transition: transform 0.1s;
+  }
+  
+  .view360-text, .engine270-text {
+    position: sticky;
+    bottom: 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 1.2rem;
+    z-index: 10;
+    opacity: 0.8;
+    margin-top: auto;
+  }
+  
+  /* In Motion Section */
+  #running .section-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    padding: 20px;
+  }
+  
+  #running .car-video {
+    flex: 1;
+    max-width: 50%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+  }
+  
+  #running .content-right {
+    flex: 1;
+    text-align: left;
+    padding-left: 40px;
+    max-width: 50%;
+  }
+  
+  #running .content-right h1 {
+    font-size: 2.5rem;
+  }
+  
+  #running .content-right p {
+    font-size: 1.1rem;
+  }
+  
+  /* Interior Section */
+  #interior .section-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    padding: 20px;
+  }
+  
+  #interior .interior-image {
+    flex: 1;
+    max-width: 50%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+  }
+  
+  #interior .content-left {
+    flex: 1;
+    text-align: left;
+    padding-right: 40px;
+    max-width: 50%;
+  }
+  
+  #interior .content-left h1 {
+    font-size: 2.5rem;
+  }
+  
+  #interior .content-left p {
+    font-size: 1.1rem;
+  }
+  
+  /* Section Specific Styles */
+  #intro .parallax-bg {
+    background-image: url('assets/car.jpg');
+  }
+  
+  #intro .parallax-fg {
+    background-image: url('assets/car.jpg');
+    opacity: 0.3;
+  }
+  
+  #features .parallax-bg {
+    background-image: url('assets/engine.jpg');
+  }
+  
+  #features .parallax-fg {
+    background-image: url('assets/engine.jpg');
+    opacity: 0.3;
+  }
+  
+  #view360 .parallax-bg {
+    background-image: url('assets/car.jpg');
+  }
+  
+  #engine270 .parallax-bg {
+    background-image: url('assets/engine.jpg');
+  }
+  
+  #interior .parallax-bg {
+    background-image: url('assets/interior.jpg');
+  }
+  
+  #interior .parallax-fg {
+    background-image: url('assets/interior.jpg');
+    opacity: 0.3;
+  }
+  
+  #running .parallax-bg {
+    background-image: url('assets/running.jpg');
+  }
+  
+  #running .parallax-fg {
+    background-image: url('assets/running.jpg');
+    opacity: 0.3;
+  }
+  
+  #performance .parallax-bg {
+    background-image: url('assets/running.jpg');
+  }
+  
+  #performance .parallax-fg {
+    background-image: url('assets/running.jpg');
+    opacity: 0.3;
+  }
+  
+  #contact .parallax-bg {
+    background-image: url('assets/engine.jpg');
+  }
+  
+  #contact .parallax-fg {
+    background-image: url('assets/engine.jpg');
+    opacity: 0.3;
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    nav ul {
+      display: flex;
+      justify-content: flex-end;
+      padding: 8px 15px;
+    }
+  
+    nav ul li {
+      margin: 0 5px;
+    }
+  
+    nav ul li a {
+      font-size: 0.75rem;
+    }
+  
+    .logo {
+      max-width: 150px;
+      margin-bottom: 15px;
+    }
+  
+    .section h1 {
+      font-size: 2rem;
+    }
+  
+    .section p,
+    .feature-list li {
+      font-size: 1rem;
+      padding: 0 15px;
+    }
+  
+    #car-3d-container {
+      width: 90%;
+      height: 90%;
+    }
+  
+    .car-360 canvas, .engine-270 img {
+      max-width: 90%;
+    }
+  
+    .view360-text, .engine270-text {
+      font-size: 1rem;
+      padding: 0 20px;
+    }
+  
+    #running .section-content {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    #running .car-video {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    #running .content-right {
+      max-width: 100%;
+      padding-left: 0;
+      text-align: center;
+    }
+  
+    #running .content-right h1 {
+      font-size: 1.8rem;
+    }
+  
+    #running .content-right p {
+      font-size: 1rem;
+    }
+  
+    #interior .section-content {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    #interior .interior-image {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    #interior .content-left {
+      max-width: 100%;
+      padding-right: 0;
+      text-align: center;
+    }
+  
+    #interior .content-left h1 {
+      font-size: 1.8rem;
+    }
+  
+    #interior .content-left p {
+      font-size: 1rem;
+    }
+  }
